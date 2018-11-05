@@ -1,0 +1,9 @@
+data:ログから抽出したCANパケットのID毎のデータ部
+images:data_to_images.pyにより生成された画像ファイル
+log:CANデータの元ログ
+time:ログから抽出したCANパケットのID毎の周期
+
+canid.txt:対象とするCAN IDのリスト
+data_to_images.py:dataフォルダのファイルから画像を生成する
+max_and_min_time.py:timeフォルダのファイルから周期の最大最小値を抽出する
+pickup_time_and_data.py:ログファイルから周期とデータ部を抽出する
