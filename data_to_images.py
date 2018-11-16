@@ -27,6 +27,20 @@ window_size = 64 #行数
 initial_bias = 4 #putpixelの回数
 img = Image.new('RGB', (window_size,window_size))
 
+print("Is it training data or varification data?(training:0 varification:1) ")
+while True:
+	flag = input()
+	if flag == '0':
+		path_rr = 'data/log_NT1000_{}_data.csv'
+		path_ww = 'images/color/data_set/{}_{}_images.png'
+		break
+	elif flag == '1':
+		path_rr = 'data/log_NT1000_{}_test.csv'
+		path_ww = 'images/color/test/{}_{}_images.png'
+		break
+	else:
+		print("Please type 0 or 1")
+
 with open(list, mode='r') as fl:
 	for id in fl:
 		id = id.replace('\r','') #CAN IDリストの改行を排除
@@ -36,7 +50,7 @@ with open(list, mode='r') as fl:
 		cnt = 0
 		bias = 0
 		images_num = 0
-		path_r = 'data/log_NT1000_{}_data.csv'.format(id) #ログファイルの取得
+		path_r = path_rr.format(id) #ログファイルの取得
 		print(id)
 		
 		with open(path_r, mode='r') as fd:
@@ -55,7 +69,8 @@ with open(list, mode='r') as fl:
 					cnt = cnt + 1
 					bias = 0
 				if cnt  == window_size:
-					path_w = 'images/{}_{}_images.png'.format(id,images_num) #保存する画像の名前とパスを指定
+					path_w = path_ww.format(id,images_num) #保存する画像の名前とパスを指定
+					#print(path_w)
 					img.save(path_w)
 					img = Image.new('RGB', (window_size, window_size))
 					print(images_num)
