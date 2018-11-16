@@ -14,12 +14,12 @@ with open(list, mode='r') as f:
 		line = line.replace('\r\n','')
 
 		path_r = 'log/log_NT1000_{}.csv'.format(line)
-		path_data_w = 'data/log_NT1000_{}_data.csv'.format(line)
+		path_data_w = 'data/log_NT1000_{}_test.csv'.format(line)
 		path_time_w = 'time/{}_Time.csv'.format(line)
 
 		df = pd.read_csv(path_r, names=('Time','ID','P1','P2','P3','P4','P5','P6','P7','P8','D1','D2','D3','D4','D5','D6','D7','D8'))
 
-		time = df['Time'][0:1000]
+		time = df['Time'][0:2000]
 		time.to_csv(path_time_w,index=False)
-		data = df[['P1','P2','P3','P4','P5','P6','P7','P8']][0:1000]
+		data = df[['P1','P2','P3','P4','P5','P6','P7','P8']][0:2000]
 		data.to_csv(path_data_w,index=False)
